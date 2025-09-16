@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Motivation Mastery Hub - Professional Development</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #e8c5e5 100%);
+      min-height: 100vh;
+      color: #2c3e50;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* Professional Navigation */
+    .nav-bar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      padding: 12px 0;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    
+    .logo {
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #8e44ad;
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
+    
+    .nav-link {
+      text-decoration: none;
+      color: #2c3e50;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      background: linear-gradient(45deg, #8e44ad, #9b59b6);
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    /* Elegant Bubbles */
+    .bubbles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .bubble {
+      position: absolute;
+      bottom: -100px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: elegantRise 20s infinite linear;
+    }
+    
+    .bubble:nth-child(1) { left: 10%; width: 30px; height: 30px; animation-duration: 18s; }
+    .bubble:nth-child(2) { left: 25%; width: 15px; height: 15px; animation-duration: 22s; animation-delay: 3s; }
+    .bubble:nth-child(3) { left: 40%; width: 40px; height: 40px; animation-duration: 16s; animation-delay: 6s; }
+    .bubble:nth-child(4) { left: 60%; width: 25px; height: 25px; animation-duration: 24s; animation-delay: 2s; }
+    .bubble:nth-child(5) { left: 80%; width: 35px; height: 35px; animation-duration: 19s; animation-delay: 4s; }
+    
+    @keyframes elegantRise {
+      to {
+        bottom: 110vh;
+        transform: translateX(-50px) rotate(180deg);
+      }
+    }
+    
+    /* Page Container */
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding-top: 80px;
+    }
+    
+    .page.active {
+      display: block;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+    
+    /* Professional Header */
+    .header {
+      text-align: center;
+      padding: 40px 0;
+    }
+    
+    .search-container {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 30px;
+      padding: 12px 25px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      margin-bottom: 25px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    
+    .search-container:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+    
+    .search-input {
+      border: none;
+      outline: none;
+      padding: 8px 15px;
+      width: 400px;
+      font-size: 16px;
+      background: transparent;
+      color: #2c3e50;
+    }
+    
+    .search-input::placeholder {
+      color: #7f8c8d;
+    }
+    
+    .search-btn {
+      background: linear-gradient(45deg, #8e44ad, #9b59b6);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .search-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(142, 68, 173, 0.4);
+    }
+    
+    .main-title {
+      color: #2c3e50;
+      font-size: 3em;
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .subtitle {
+      color: #5a6c7d;
+      font-size: 1.3em;
+      font-weight: 300;
+      margin-bottom: 40px;
+    }
+    
+    /* Professional Cards Grid */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
+      padding: 20px 0;
+    }
+    
+    .professional-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s ease;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .professional-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+    
+    .card-number {
+      position: absolute;
+      top: -15px;
+      left: 25px;
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(45deg, #8e44ad, #9b59b6);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.3em;
+      box-shadow: 0 5px 20px rgba(142, 68, 173, 0.3);
+    }
+    
+    .card-title {
+      font-size: 1.4em;
+      font-weight: 700;
+      color: #2c3e50;
+      margin: 15px 0 12px 0;
+      line-height: 1.3;
+    }
+    
+    .card-desc {
+      font-size: 1em;
+      color: #5a6c7d;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      font-weight: 400;
+    }
+    
+    .life-lesson {
+      font-size: 0.9em;
+      color: #8e44ad;
+      font-style: italic;
+      font-weight: 500;
+      border-left: 4px solid #8e44ad;
+      padding-left: 15px;
+      margin-top: 10px;
+      background: rgba(142, 68, 173, 0.05);
+      padding: 10px 15px;
+      border-radius: 0 10px 10px 0;
+    }
+    
+    /* Second Page - Hanuman Ji */
+    .spiritual-page {
+      text-align: center;
+      padding: 60px 0;
+    }
+    
+    .hanuman-container {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 25px;
+      padding: 40px;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+    
+    .hanuman-title {
+      font-size: 2.5em;
+      color: #8e44ad;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    
+    .hanuman-image {
+      width: 600px;
+      height: 800px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      margin: 20px 0;
+      transition: transform 0.3s ease;
+    }
+    
+    .hanuman-image:hover {
+      transform: scale(1.05);
+    }
+    
+    .spiritual-quote {
+      font-size: 1.2em;
+      color: #2c3e50;
+      font-style: italic;
+      margin: 25px 0;
+      padding: 20px;
+      background: rgba(142, 68, 173, 0.1);
+      border-radius: 15px;
+      border-left: 5px solid #8e44ad;
+    }
+    
+    .blessing-text {
+      font-size: 1.1em;
+      color: #5a6c7d;
+      line-height: 1.7;
+      margin-top: 20px;
+    }
+    
+    /* Professional Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 0;
+      color: #5a6c7d;
+      font-size: 1em;
+      font-weight: 300;
+    }
+    
+    /* Responsive Design */
+    @media(max-width: 768px) {
+      .nav-links { display: none; }
+      .main-title { font-size: 2.2em; }
+      .search-input { width: 280px; }
+      .content-grid { grid-template-columns: 1fr; gap: 20px; }
+      .professional-card { padding: 20px; }
+      .hanuman-image { width: 250px; height: 320px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bubbles">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Professional Navigation -->
+  <nav class="nav-bar">
+    <div class="nav-container">
+      <a href="#" class="logo">🚀 Motivation Hub</a>
+      <div class="nav-links">
+        <a href="#" class="nav-link active" onclick="showPage('page1')">Motivation Steps</a>
+        <a href="#" class="nav-link" onclick="showPage('page2')">Spiritual Guidance</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page 1: Motivation Steps -->
+  <div id="page1" class="page active">
+    <div class="container">
+      <div class="header">
+        <div class="search-container">
+          <input type="text" class="search-input" placeholder="Google Search...">
+          <button class="search-btn" onclick="searchGoogle()">🔍 Search</button>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="professional-card" onclick="highlightCard(this)">
+          <div class="card-number">1</div>
+          <div class="card-title">Dimag ko samjho – Just Start</div>
+          <div class="card-desc">Overcome mental resistance through immediate action. Your mind creates barriers; breakthrough begins with the first step.</div>
+          <div class="life-lesson">🎯 "A journey of thousand miles begins with a single step" - Lao Tzu</div>
+        </div>
+
+        <div class="professional-card" onclick="highlightCard(this)">
+          <div class="card-number">2</div>
+          <div class="card-title">Magic of 2 Minute Rule</div>
+          <div class="card-desc">Commit to 2 minutes of focused effort. Momentum builds naturally, leading to sustained productivity.</div>
+          <div class="life-lesson">⚡ "Small consistent actions create extraordinary results"</div>
+        </div>
+
+        <div class="professional-card" onclick="highlightCard(this)">
+          <div class="card-number">3</div>
+          <div class="card-title">Treat it like brushing teeth</div>
+          <div class="card-desc">Establish non-negotiable daily habits. Remove decision fatigue through systematic automation.</div>
+          <div class="life-lesson">🔄 "Excellence is not an act, but a habit" - Aristotle</div>
+        </div>
+
+        <div class="professional-card" onclick="highlightCard(this)">
+          <div class="card-number">4</div>
+          <div class="card-title">Set environment for success</div>
+          <div class="card-desc">Design your physical and digital space to support peak performance and eliminate distractions.</div>
+          <div class="life-lesson">🎯 "Your environment shapes your behavior and determines your success"</div>
+        </div>
+
+        <div class="professional-card" onclick="highlightCard(this)">
+          <div class="card-number">5</div>
+          <div class="card-title">5 Second Rule</div>
+          <div class="card-desc">Count 5-4-3-2-1, then take immediate action. Break hesitation patterns through decisive movement.</div>
+          <div class="life-lesson">⚡ "Courage is not the absence of fear, but action in spite of it"</div>
+        </div>
+
+        <div class="professional-card" onclick="highlightCard(this)">
+          <div class="card-number">6</div>
+          <div class="card-title">Strategic Self-Rewards</div>
+          <div class="card-desc">Implement positive reinforcement systems. Celebrate progress to maintain motivation and build momentum.</div>
+          <div class="life-lesson">🎉 "What gets rewarded gets repeated - design your success system"</div>
+        </div>
+
+        <div class="professional-card" onclick="highlightCard(this)">
+          <div class="card-number">7</div>
+          <div class="card-title">Embrace Strategic Discomfort</div>
+          <div class="card-desc">Growth requires stepping beyond comfort zones. Master discomfort to unlock extraordinary potential.</div>
+          <div class="life-lesson">💪 "Comfort is the enemy of greatness - choose growth over ease"</div>
+        </div>
+      </div>
+
+      <div class="footer">
+        ✨ Professional Development Through Strategic Action & Spiritual Guidance ✨
+      </div>
+    </div>
+  </div>
+
+  <!-- Page 2: Hanuman Ji Spiritual Guidance -->
+  <div id="page2" class="page">
+    <div class="container">
+      <div class="spiritual-page">
+        <div class="hanuman-container">
+          <h2 class="hanuman-title">🙏 Divine Inspiration & Strength</h2>
+          
+          <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/b718849e-de10-46c2-a4fc-07c114a9ded1.png" alt="Hanuman Ji" class="hanuman-image">
+          
+          <div class="spiritual-quote">
+            "जब तक शरीर में प्राण हैं, तब तक राम नाम का जाप करते रहना चाहिए।"<br>
+            <em>"As long as there is breath in the body, one should continue chanting the name of Ram."</em>
+          </div>
+          
+          <div class="blessing-text">
+            <strong>Hanuman Ji's Teachings for Success:</strong><br><br>
+            🔥 <strong>Unwavering Devotion:</strong> Complete dedication to your goals<br>
+            💪 <strong>Fearless Action:</strong> Face challenges with courage and strength<br>
+            🎯 <strong>Service & Purpose:</strong> Align your actions with higher purpose<br>
+            🙏 <strong>Humility in Victory:</strong> Stay grounded despite achievements<br>
+            ⚡ <strong>Infinite Energy:</strong> Draw power from divine connection<br><br>
+            
+            <em>"Sankat Mochan, Mangal Murti - May Hanuman Ji remove all obstacles from your path to success and bless you with the strength to achieve your highest potential."</em>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer">
+        🕉️ With Divine Blessings & Professional Excellence 🕉️
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showPage(pageId) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      // Show selected page
+      document.getElementById(pageId).classList.add('active');
+      
+      // Update navigation
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function searchGoogle() {
+      const query = document.querySelector('.search-input').value;
+      if (query.trim()) {
+        window.open(`https://www.google.com/search?q=${encodeURIComponent(query)}`, '_blank');
+      }
+    }
+
+    function highlightCard(card) {
+      // Remove previous highlights
+      document.querySelectorAll('.professional-card').forEach(c => {
+        c.style.background = 'rgba(255, 255, 255, 0.95)';
+        c.style.transform = '';
+      });
+      
+      // Highlight clicked card
+      card.style.background = 'linear-gradient(45deg, rgba(255, 234, 167, 0.9), rgba(250, 177, 160, 0.9))';
+      card.style.transform = 'translateY(-15px) scale(1.05)';
+      
+      // Reset after 3 seconds
+      setTimeout(() => {
+        card.style.background = 'rgba(255, 255, 255, 0.95)';
+        card.style.transform = '';
+      }, 3000);
+    }
+
+    // Enter key for search
+    document.querySelector('.search-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        searchGoogle();
+      }
+    });
+
+    // Smooth scroll and professional interactions
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add professional loading effect
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+    });
+  </script>
+</body>
+</html>
